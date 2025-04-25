@@ -1,6 +1,8 @@
 import { WebSocketServer } from 'ws';
 
-const wss = new WebSocketServer({ port: 8080 });
+const port = process.env.PORT || 8080;
+
+const wss = new WebSocketServer({ port });
 const rooms = new Map(); // Map<code, { players: WebSocket[], creator: WebSocket }>
 
 function generateCode() {
